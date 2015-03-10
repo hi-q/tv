@@ -1,5 +1,37 @@
+$light-blue: #50b4ff;
+$dark-blue: #2e94c5;
+
+body {
+    background: #dedede;
+}
+
+ul {
+    -moz-padding-start: 0;
+    -webkit-padding-start: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
 .thing-form {
     margin: 20px 0;
+}
+
+.panel {
+    border: 0;
+    border-radius: 0;
+}
+
+.container {
+    width: 960px;
+
+    header {
+        padding: 3px;
+        background: #7c7c7c;
+        color: #ccc;
+        margin-bottom: 5px;
+    }
 }
 
 #banner {
@@ -7,19 +39,142 @@
     margin-top: -20px;
 }
 
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-.hero-unit {
+.banner {
     position: relative;
-    padding: 30px 15px;
     color: #F5F5F5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #4393B9;
+    height: 250px;
+}
+
+.channel-logo {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.content {
+    background: #FFF;
+
+    .pnl {
+        padding: 0;
+    }
+}
+
+.player {
+    background: url(/assets/images/player.png);
+    width: 640px;
+    height: 480px;
+}
+
+.programs {
+    .date {
+        background: #DEDEDE;
+        color: #000;
+        text-align: center;
+        height: 32px;
+        line-height: 32px;
+        position: relative;
+
+        span {
+            position: absolute;
+            right: 5px;
+            font-size: 20px;
+            top: 4px;
+        }
+    }
+
+    li {
+        padding: 10px;
+        position: relative;
+
+        .discuss {
+            position: absolute;
+            display: none;
+            right: 10px;
+            top: 10px;
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            font-size: 18px;
+        }
+
+        .time, .title {
+            color: $dark-blue;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        &.odd {
+            background: #EFEFEF;
+        }
+
+        &.even {
+            background: #DEDEDE;
+        }
+
+        &:hover {
+            background: $light-blue;
+
+            .discuss {
+                display: block;
+            }
+        }
+    }
+}
+
+.week-row {
+    border-bottom: 1px solid #CCC;
+    height: 36px;
+    line-height: 36px;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    .number {
+        font-size: 125%;
+        color: $light-blue;
+        display: inline-block;
+    }
+}
+
+.add-discussion {
+    height: 160px;
+
+    textarea {
+        width: 500px;
+        height: 100px;
+    }
+}
+
+.commercial {
+    background: url(/assets/images/commercial.png) no-repeat;
+    background-size: cover;
+    width: 320px;
+    height: 200px;
+}
+
+.recommendation {
+    background: url(/assets/images/recommendation.png) no-repeat;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 134px;
+    height: 83px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.messagebox {
+    position: absolute;
+    background: #FFF;
+    border: 1px solid $dark-blue;
 }
 
 .footer {

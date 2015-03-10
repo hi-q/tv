@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "Новый канал",
+    "description": "Новый канал открыт Василием Пупкиным в 1999 году.",
+    "logoUrl": "assets/images/channels/new-channel/logo.jpeg",
+    "bannerUrl": "assets/images/channels/new-channel/banner.jpeg"
+  }
+]

@@ -1,0 +1,87 @@
+$avatar-size: 32px;
+$user-bar-color: #dedede;
+$bar-height: 50px;
+
+.navbar-default {
+  border: 0;
+}
+
+.navbar {
+  background: #7c7c7c;
+  vertical-align: middle;
+
+  .navbar-brand {
+    color: #FFF;
+  }
+
+  #navbar-main {
+    position: relative;
+  }
+
+  .navbar-search {
+    height: $bar-height;
+
+    .input-group {
+      top: 50%;
+      margin-top: -17px;
+    }
+
+    .navbar-search-input {
+      min-width: 300px;
+    }
+  }
+
+  .navbar-user {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: $bar-height;
+
+    a {
+      color: $user-bar-color;
+    }
+
+    .small {
+      font-size: 60%;
+    }
+
+    .indicator {
+      background: #F00;
+      color: #000;
+      margin-left: -5px;
+      padding: 2px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .avatar {
+      width: $avatar-size;
+      height: $avatar-size;
+      display: inline-block;
+      background: url(/assets/images/avatar.png);
+      vertical-align: middle;
+    }
+
+    button {
+      margin-left: 10px;
+      display: inline-block;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      color: $user-bar-color;
+      padding: 6px;
+      font-size: 18px;
+      outline: none;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:active {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+}

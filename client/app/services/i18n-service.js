@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('tvApp').factory('channels', [
+angular.module('tvApp').factory('i18n', [
     '$resource',
     function ($resource) {
 
         return $resource(
-            'assets/data/channels.json'
+            'assets/data/i18n.json'
         );
     }
 ]);

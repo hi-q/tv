@@ -7,14 +7,52 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">tv</a>
+      <a href="/" class="navbar-brand">TV</a>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-      </ul>
+
+      <div class="col-xs-6 navbar-search">
+        <div class="input-group">
+          <input type="text" class="navbar-search-input form-control" placeholder="Ищите каналы, авторов или зрителей" aria-describedby="sizing-addon2">
+          <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
+        </div>
+      </div>
+
+      <div class="navbar-user">
+
+        <a class="navbar-username" href="{{ 'Users/' + user.login }}">
+          <div class="avatar"></div>
+          <span>{{user.name}}</span>
+        </a>
+
+        <button class="btn btn-default show-messages glyphicon glyphicon-envelope"
+                title="{{::i18n('nav-show-messages')}}"
+                ng-click="messagebox.isOpened = !messagebox.isOpened">
+
+          <div class="messagebox" ng-show="messagebox.isOpened">
+            <span>Отметить все как прочитанное</span>
+            <span>Написать новое сообщение</span>
+            <div>
+              Сообщения (1)
+            </div>
+          </div>
+
+        </button>
+        <span class="messages-count small indicator">10</span>
+
+        <button class="btn btn-default show-friends-requests glyphicon glyphicon-user"
+                title="{{::i18n('nav-show-friends-requests')}}"></button>
+        <span class="friends-requests-count small indicator">2</span>
+
+        <button class="btn btn-default show-notifications glyphicon glyphicon-globe"
+                title="{{::i18n('nav-show-notifications')}}"></button>
+        <span class="notifications-count small indicator">100</span>
+
+        <button class="btn btn-default show-confidentiality-settings glyphicon glyphicon-th-list"
+                title="{{::i18n('nav-show-confidentiality')}}"></button>
+
+      </div>
     </div>
+
   </div>
 </div>

@@ -11,4 +11,15 @@ angular.module('tvApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+  })
+  .run(function ($rootScope, i18n) {
+
+      i18n.get(function (localization) {
+
+        $rootScope.i18n = function (key) {
+          return localization[key] || key;
+        };
+
+      });
+
   });
