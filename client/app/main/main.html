@@ -18,6 +18,10 @@
 
       <div class="discussion container-fluid" ng-show="!!discussingProgram && !!discussions.length">
         <header ng-bind='i18n("discussion") + " \"" + discussingProgram.title + "\" за 12 Января"'></header>
+        <div class="col-xs-12">
+          <span ng-bind="discussingProgram.time"></span>
+          <span ng-bind="discussingProgram.description"></span>
+        </div>
         <ul>
           <li class="discussion" ng-repeat="discussion in discussions track by discussion.id">
             <div class="col-xs-1 logo">

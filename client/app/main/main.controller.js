@@ -102,16 +102,6 @@ angular.module('tvApp')
             }
         ];
 
-        $scope.shouldFocusOnCommentSection = function () {
-            if (angular.isUndefined($scope.discussingProgram)) {
-                return false;
-            }
-
-            // trick for dirty-checking
-            $scope.discussingProgram = angular.copy($scope.discussingProgram);
-            return true;
-        };
-
         function setCommenting() {
             $scope.isCommenting = true;
             $timeout(function () {

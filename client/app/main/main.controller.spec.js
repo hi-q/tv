@@ -6,23 +6,45 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('tvApp'));
 
   var MainCtrl,
-      scope,
-      $httpBackend;
+      scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+  beforeEach(module(function($provide) {
+    $provide.factory('i18n', function () {
+      function i18n() { }
 
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      i18n.get = function () {
+        return {};
+      };
+
+      return i18n;
     });
   }));
 
-  it('should attach a list of things to the scope', function () {
-    $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
+  // Initialize the controller and a mock scope
+  beforeEach(inject(function ($controller, $rootScope) {
+
+
+
+    scope = $rootScope.$new();
+    MainCtrl = $controller('MainCtrl', {
+      $scope: scope,
+      channels: {
+        query: function() {
+          return [
+            {
+              'id': 1,
+              'name': 'Новый канал',
+              'description': 'Новый канал открыт Василием Пупкиным в 1999 году.',
+              'logoUrl': 'assets/images/channels/new-channel/logo.jpeg',
+              'bannerUrl': 'assets/images/channels/new-channel/banner.jpeg'
+            }
+          ];
+        }
+      }
+    });
+  }));
+
+  it('should attach a list of messages to the scope', function () {
+    expect(scope.messages.length).toBe(3);
   });
 });
