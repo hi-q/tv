@@ -78,7 +78,9 @@
         </p>
         <ul>
           <li ng-repeat="program in currentDateProgram.programs track by program.id"
-              ng-class-odd="'odd'" ng-class-even="'even'">
+              ng-class-odd="'odd'"
+              ng-class-even="'even'"
+                  class="program">
 
             <button title="{{::i18n('discuss')}}"
                     class="discuss glyphicon glyphicon-envelope"

@@ -3,14 +3,17 @@
 describe('Main View', function() {
   var page;
 
-  beforeEach(function() {
+  beforeEach(function(done) {
     browser.get('/');
-    page = require('./main.po');
+
+    setTimeout(function () {
+      page = require('./main.po');
+      done();
+    }, 1000);
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it('should include programs and discussions', function() {
+    expect(page.programs.count()).toBe(3);
+    expect(page.discussions.count()).toBe(3);
   });
 });

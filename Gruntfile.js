@@ -635,9 +635,25 @@ module.exports = function (grunt) {
     }
 
     else grunt.task.run([
-      'test:server',
-      'test:client'
+        'test:server',
+        'test:client'
     ]);
+  });
+
+  grunt.registerTask('test-e2e', function(target) {
+    return grunt.task.run([
+      'clean:server',
+      'env:all',
+      'env:test',
+      'injector:sass',
+      'concurrent:test',
+      'injector',
+      'wiredep',
+      'autoprefixer',
+      'express:dev',
+      'protractor'
+    ]);
+
   });
 
   grunt.registerTask('build', [
