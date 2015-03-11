@@ -1,6 +1,8 @@
 $avatar-size: 32px;
 $user-bar-color: #dedede;
 $bar-height: 50px;
+$light-blue: #50b4ff;
+$dark-blue: #2e94c5;
 
 .navbar-default {
   border: 0;
@@ -81,6 +83,91 @@ $bar-height: 50px;
       &:active {
         box-shadow: none;
         outline: none;
+      }
+    }
+
+    .messagebox {
+      $show-all-height: 30px;
+      $message-box-size: 450px;
+      $triangle-size: 7px;
+
+      position: absolute;
+      background: #FFF;
+      border: 1px solid $user-bar-color;
+      font-size: 14px;
+      text-align: left;
+      color: #000;
+      padding-bottom: $show-all-height;
+      min-width: $message-box-size;
+      min-height: $message-box-size;
+      right: 0;
+      line-height: 18px;
+      margin-top: $triangle-size;
+
+      .count {
+        padding: 6px;
+      }
+
+      .message {
+        padding: 5px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $user-bar-color;
+        height: 65px;
+        box-sizing: border-box;
+
+        .avatar {
+          width: $avatar-size;
+          height: $avatar-size;
+          display: inline-block;
+          background-size: contain;
+        }
+
+        .message-from {
+          font-weight: bold;
+        }
+
+        .message-date {
+          color: #999;
+        }
+
+        &::before {
+          position: absolute;
+          display: inline-block;
+          border-left: 7px solid transparent;  /* left arrow slant */
+          border-right: 7px solid transparent; /* right arrow slant */
+          border-bottom: 7px solid $user-bar-color; /* bottom, add background color here */
+          right: 175px;
+          top: -$triangle-size;
+          content: "";
+        }
+
+        &::after {
+          position: absolute;
+          display: inline-block;
+          border-left: 6px solid transparent;  /* left arrow slant */
+          border-right: 6px solid transparent; /* right arrow slant */
+          border-bottom: 6px solid #fff; /* bottom, add background color here */
+          right: 176px;
+          top: -$triangle-size + 1px;
+          content: "";
+        }
+      }
+
+      button {
+        font-size: 14px;
+        color: $dark-blue;
+      }
+
+      .show-all {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: $show-all-height;
+        background: $light-blue;
+        color: #000;
+        margin: 0;
+        width: 100%;
       }
     }
   }

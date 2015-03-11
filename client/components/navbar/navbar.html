@@ -29,16 +29,33 @@
                 title="{{::i18n('nav-show-messages')}}"
                 ng-click="messagebox.isOpened = !messagebox.isOpened">
 
-          <div class="messagebox" ng-show="messagebox.isOpened">
-            <span>Отметить все как прочитанное</span>
-            <span>Написать новое сообщение</span>
-            <div>
-              Сообщения (1)
-            </div>
-          </div>
-
         </button>
         <span class="messages-count small indicator">10</span>
+
+        <div class="messagebox" ng-show="messagebox.isOpened">
+
+          <button class="btn" ng-bind="::i18n('mark-all-as-read')"></button>
+          <button class="btn" ng-bind="::i18n('new-message')"></button>
+
+          <div class="count">
+            <span ng-bind="::i18n('messages')"></span>
+            <span ng-bind="messages.length || 0 | brackets"></span>
+          </div>
+
+          <ul>
+            <li class="message" ng-repeat="message in messages track by message.id">
+              <div class="avatar col-xs-1"
+                   ng-style="{ 'background-image': 'url(' + message.from.avatarUrl + ')' }"></div>
+              <div class="col-xs-11">
+                <div class="message-from" ng-bind="message.from.name"></div>
+                <div class="message-text" ng-bind="message.text"></div>
+                <div class="message-date" ng-bind="message.dateTime | dateTime"></div>
+              </div>
+            </li>
+          </ul>
+
+          <button class="btn show-all" ng-bind="::i18n('show-all-messages')"></button>
+        </div>
 
         <button class="btn btn-default show-friends-requests glyphicon glyphicon-user"
                 title="{{::i18n('nav-show-friends-requests')}}"></button>
