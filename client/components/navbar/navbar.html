@@ -21,7 +21,8 @@
       <div class="navbar-user">
 
         <a class="navbar-username" href="{{ 'Users/' + user.login }}">
-          <div class="avatar"></div>
+          <div class="avatar"
+               ng-style="{ 'background-image': 'url(' + user.avatarUrl + ')' }"></div>
           <span>{{user.name}}</span>
         </a>
 

@@ -16,8 +16,35 @@
 
       <div class="player"></div>
 
-      <div class="discussion">
-
+      <div class="discussion container-fluid" ng-show="!!discussingProgram && !!discussions.length">
+        <header ng-bind='i18n("discussion") + " \"" + discussingProgram.title + "\" за 12 Января"'></header>
+        <ul>
+          <li class="discussion" ng-repeat="discussion in discussions track by discussion.id">
+            <div class="col-xs-1 logo">
+              <img ng-src="{{discussion.from.avatarUrl}}"
+                   alt="{{discussion.from.name}}">
+            </div>
+            <div class="col-xs-11">
+              <div class="discussion-title" ng-bind="discussion.from.name"></div>
+              <div class="discussion-date" ng-bind="discussion.dateTime | dateTime"></div>
+              <div class="discussion-text" ng-bind="discussion.text"></div>
+              <ul class="discussion-replies">
+                <li ng-repeat="reply in discussion.replies || [] track by reply.id">
+                  <div class="col-xs-1 logo">
+                    <img ng-src="{{reply.from.avatarUrl}}"
+                         alt="{{reply.from.name}}">
+                  </div>
+                  <div class="col-xs-11">
+                    <div class="discussion-title" ng-bind="reply.from.name"></div>
+                    <div class="discussion-date" ng-bind="reply.dateTime | dateTime"></div>
+                    <div class="discussion-text" ng-bind="reply.text"></div>
+                  </div>
+                </li>
+              </ul>
+              <button ng-bind="::i18n('reply')" ng-click="reply(discussion);"></button>
+            </div>
+          </li>
+        </ul>
       </div>
 
       <div class="add-discussion panel">
@@ -29,7 +56,7 @@
         <div class="col-xs-10">
           <textarea
                   placeholder="{{::i18n('leave-comment')}}"
-                  focus-on="discussingProgram !== undefined"
+                  focus-on="!!discussingProgram && !!isCommenting"
                   on-enter="addComment(comment)"
                   ng-model="comment.text"></textarea>
         </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tvApp')
-    .controller('MainCtrl', function ($scope, $http, channels, programs) {
+    .controller('MainCtrl', function ($scope, $timeout, channels, programs, discussions) {
 
         $scope.messagebox = {
             isOpened: false
@@ -9,11 +9,25 @@ angular.module('tvApp')
 
         $scope.discuss = function (program) {
             $scope.discussingProgram = program;
+            setCommenting();
         };
 
         $scope.addComment = function (comment) {
-            $scope.discussingProgram = null;
+            var newComment = {
+                from: $scope.user,
+                text: comment.text
+            };
+
+            var programId = $scope.discussingProgram.id;
+
+            discussions.add(newComment, programId, $scope.discussions, $scope.replyingTo);
             $scope.comment = null;
+            $scope.replyingTo = null;
+        };
+
+        $scope.reply = function (discussionToReplyTo) {
+            $scope.discuss($scope.discussingProgram);
+            $scope.replyingTo = discussionToReplyTo;
         };
 
         channels.query(function (channelsList) {
@@ -27,13 +41,29 @@ angular.module('tvApp')
                     currentDateProgram = program[0];
 
                 $scope.currentDateProgram = currentDateProgram;
+                var currentPrograms = currentDateProgram.programs;
+
+                $scope.discuss(currentPrograms[0]);
 
             });
         });
 
+        $scope.$watch('discussingProgram', function (discussingProgram) {
+
+           if (!discussingProgram) {
+               return;
+           }
+
+            discussions.query(discussingProgram.id, function (discussionsList) {
+                $scope.discussions = discussionsList;
+            });
+        });
+
         $scope.user = {
+            id: 4,
             name: 'Вася Пупкин',
-            login: 'poupqine'
+            login: 'poupqine',
+            avatarUrl: 'assets/images/avatars/4.png'
         };
 
         $scope.messages = [
@@ -72,4 +102,20 @@ angular.module('tvApp')
             }
         ];
 
+        $scope.shouldFocusOnCommentSection = function () {
+            if (angular.isUndefined($scope.discussingProgram)) {
+                return false;
+            }
+
+            // trick for dirty-checking
+            $scope.discussingProgram = angular.copy($scope.discussingProgram);
+            return true;
+        };
+
+        function setCommenting() {
+            $scope.isCommenting = true;
+            $timeout(function () {
+                $scope.isCommenting = false;
+            }, 500);
+        }
     });

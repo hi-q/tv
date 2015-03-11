@@ -8,9 +8,11 @@
   "nav-show-notifications": "Показать уведомления",
   "nav-show-confidentiality": "Показать настройки конфиденциальности",
   "discuss": "Обсудить",
+  "discussion": "Обсуждение передачи",
   "leave-comment": "Оставьте Ваш отзыв...",
   "show-all-messages": "Показать все",
   "mark-all-as-read": "Отметить все как прочитанное",
   "new-message": "Написать новое сообщение",
-  "messages": "Сообщения"
+  "messages": "Сообщения",
+  "reply": "Ответить"
 }

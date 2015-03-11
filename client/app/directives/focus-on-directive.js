@@ -13,8 +13,6 @@ angular.module('tvApp').directive('focusOn', function() {
                     $('html, body').animate({
                         scrollTop: $element.offset().top
                     }, 500);
-                } else if (currentValue === false && previousValue) {
-                    $element[0].blur();
                 }
             });
         }
