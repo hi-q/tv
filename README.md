@@ -3,7 +3,7 @@
 - Have NodeJS installed
 
 - do
-```npm doctor```
+```npm install```
 
 - run grunt tasks:
 	- serve - for simple starting server
